@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boyasafe.mapper.TokenMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.boyasafe.model.Token">
+		<id column="tokenid" property="tokenid" />
+		<result column="token" property="token" />
+		<result column="expires_in" property="expiresIn" jdbcType="INTEGER"/>
+		<result column="appid" property="appid" />
+		<result column="appsecret" property="appsecret" />
+		<result column="createtime" property="createtime" />
+	</resultMap>
+	<select id="selectById" resultMap="BaseResultMap">
+		select * from token where tokenid = #{id}
+	</select>
+	<update id="updateById">
+		update token set token=#{token},expires_in=#{expiresIn},createtime=#{createtime}
+	</update>
+</mapper>

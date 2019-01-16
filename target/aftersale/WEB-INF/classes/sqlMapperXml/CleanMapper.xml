@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boyasafe.mapper.CleanMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.boyasafe.model.Clean">
+		<id column="clean_id" property="cleanId" />
+		<result column="machine_id" property="machineId" />
+		<result column="cleaner" property="cleaner" />
+		<result column="clean_type" property="cleanType" />
+		<result column="clean_time" property="cleanTime" />
+		<result column="by1" property="by1" />
+		<result column="by2" property="by2" />
+		<result column="by3" property="by3" />
+		<result column="by4" property="by4" />
+	</resultMap>
+	<select id="selectCleanPage" resultType="Map">
+        SELECT 
+        c.clean_id as cleanId,
+        c.machine_id as machineId,
+        c.cleaner,
+        c.clean_type as cleanType,
+        c.clean_time as cleanTime,
+        c.by1
+        FROM clean c
+        <where>
+        	1=1
+            <if test="machineId != null">
+             and   c.machine_id = #{machineId}
+            </if>
+            <if test="cleaner != null">
+             and   c.cleaner like '%${cleaner}%'
+            </if>
+            <if test="by1 != null">
+             and   c.by1 like '%${by1}%'
+            </if>
+        </where>
+        GROUP BY c.clean_id
+    </select>
+</mapper>

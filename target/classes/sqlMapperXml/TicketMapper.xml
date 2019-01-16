@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boyasafe.mapper.TicketMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.boyasafe.model.Ticket">
+		<id column="ticketid" property="ticketid" />
+		<result column="ticket" property="ticket" />
+		<result column="expires_in" property="expiresIn" jdbcType="INTEGER"/>
+		<result column="createtime" property="createtime" />
+	</resultMap>
+	<select id="selectById" resultMap="BaseResultMap">
+		select * from ticket where ticketid = #{id}
+	</select>
+	<update id="updateById">
+		update ticket set ticket=#{ticket},expires_in=#{expiresIn},createtime=#{createtime}
+	</update>
+</mapper>

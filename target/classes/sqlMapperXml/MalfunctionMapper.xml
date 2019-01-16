@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boyasafe.mapper.MalfunctionMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.boyasafe.model.Malfunction">
+		<id column="id" property="id" />
+		<result column="machine_id" property="machineId" />
+		<result column="net_name" property="netName" />
+		<result column="question_des" property="questionDes" />
+		<result column="phone" property="phone" />
+		<result column="reserve_time" property="reserveTime" />
+		<result column="province" property="province" />
+		<result column="city" property="city" />
+		<result column="county" property="county" />
+		<result column="image1" property="image1" jdbcType="BLOB"
+			typeHandler="org.apache.ibatis.type.BlobTypeHandler" />
+		<result column="image2" property="image2" jdbcType="BLOB"
+			typeHandler="org.apache.ibatis.type.BlobTypeHandler" />
+		<result column="image3" property="image3" jdbcType="BLOB"
+			typeHandler="org.apache.ibatis.type.BlobTypeHandler" />
+		<result column="repairman" property="repairman" />
+		<result column="status" property="status" />
+		<result column="create_time" property="createTime" />
+		<result column="by1" property="by1" />
+		<result column="by2" property="by2" />
+		<result column="by3" property="by3" />
+		<result column="by4" property="by4" />
+	</resultMap>
+
+	<select id="selectMalfunctionPage" resultMap="BaseResultMap">
+		SELECT
+		<!-- t.id, t.machine_id as machineId, t.net_name as netName, t.question_des 
+			as questionDes, t.phone, t.reserve_time as reserveTime, t.province, t.city, 
+			t.county, t.image1, t.image2, t.image3, t.repairman, t.status, t.create_time 
+			as creatTime, t.by1, t.by2, t.by3, t.by4 -->
+		*
+		FROM malfunction
+
+	</select>
+
+	<insert id="insertReturnId"  useGeneratedKeys="true" keyProperty="id" parameterType="com.boyasafe.model.Malfunction">
+		insert into malfunction(
+		machine_id, net_name , question_des,
+		phone, reserve_time , province,city,county,image1,image2,image3,repairman,status,create_time,by1,by2,by3,by4)
+		values(
+		#{machineId}, #{netName}, #{questionDes} ,
+		#{phone}, #{reserveTime , jdbcType=TIMESTAMP} ,#{province},#{city},#{county} ,#{image1,jdbcType=BLOB} ,#{image2,jdbcType=BLOB} ,#{image3,jdbcType=BLOB} ,
+		#{repairman},#{status},#{ createTime , jdbcType= TIMESTAMP},#{by1},#{by2},#{by3},#{by4})
+	</insert>
+	
+	<select id="countByWechatUserId" resultType="java.lang.Integer">
+		SELECT count(*) from malfunction where by1=#{by1} and `status` != '4'
+	</select>
+	
+	<select id="selectProblemView" resultType="Map">
+		SELECT
+	m.net_name,
+	m.machine_id,
+	m.question_des,
+	m.`status`,
+	m.reserve_time,
+	u.`name`,
+	u.phone
+FROM
+	malfunction m
+LEFT JOIN `user` u ON m.by2 = u.age
+WHERE m.by1=#{openid} and m.status!='4'
+	</select>
+	
+	<select id="selectProblemsList" resultMap="BaseResultMap">
+		select * from malfunction where by2=#{openid} and status!='4'
+	</select>
+	
+	<update id="updateStatus">
+		UPDATE malfunction set `status`=`status`+'1' where id=#{id}
+	</update>
+</mapper>

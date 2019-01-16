@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boyasafe.mapper.MachineInfoMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.boyasafe.model.MachineInfo">
+		<id column="machine_id" property="machineId" />
+		<result column="machine_type" property="machineType" />
+		<result column="machine_number" property="machineNumber" />
+		<result column="province" property="province" />
+		<result column="city" property="city" />
+		<result column="county" property="county" />
+		<result column="software_name" property="softwareName" />
+		<result column="software_version" property="softwareVersion" />
+		<result column="install_dir" property="installDir" />
+		<result column="install_time" property="installTime" />
+		<result column="installer" property="installer" />
+		<result column="installer_phone" property="installerPhone" />
+		<result column="operator" property="operator" />
+		<result column="operator_phone" property="operatorPhone" />
+		<result column="principle" property="principle" />
+		<result column="principle_phone" property="principlePhone" />
+		<result column="net_name" property="netName" />
+	</resultMap>
+	<select id="selectMachineInfoPage" resultType="Map">
+        SELECT 
+        t.machine_id as machineId,
+        m1.note as machineType,
+        m2.note as machineNumber,
+        pro.note as province,
+        cit.note as city,
+        coun.note as county,
+        t.software_name as softwareName,
+        t.software_version as softwareVersion,
+        t.install_dir as installDir,
+        t.install_time as installTime,
+        t.installer,
+        t.installer_phone as installerPhone,
+        t.operator,
+        t.operator_phone as operatorPhone,
+        t.principle,
+        t.principle_phone as principlePhone,
+        t.net_name as netName
+        FROM machine_info t
+        LEFT JOIN machine m1 on m1.code = t.machine_type
+        LEFT JOIN machine m2 on m2.code = t.machine_number
+        LEFT JOIN careacodetblqg pro on pro.code = t.province
+        LEFT JOIN careacodetblqg cit on cit.code = t.city
+        LEFT JOIN careacodetblqg coun on coun.code = t.county
+        <where>
+        	1=1
+            <if test="machineId != null">
+             and   t.machine_id = #{machineId}
+            </if>
+            <if test="principle != null">
+             and   t.principle like '%${principle}%'
+            </if>
+            <if test="netName != null">
+             and   t.net_name like '%${netName}%'
+            </if>
+            <if test="organizationId == 8">
+             and   t.province = 530000
+            </if>
+        </where>
+        GROUP BY t.machine_id
+    </select>
+    
+    <select id="selectMachineById" resultType="com.boyasafe.model.MachineInfo">
+        SELECT 
+        t.machine_id as machineId,
+        m1.note as machineType,
+        m2.note as machineNumber,
+        pro.note as province,
+        cit.note as city,
+        coun.note as county,
+        t.software_name as softwareName,
+        t.software_version as softwareVersion,
+        t.install_dir as installDir,
+        t.install_time as installTime,
+        t.installer,
+        t.installer_phone as installerPhone,
+        t.operator,
+        t.operator_phone as operatorPhone,
+        t.principle,
+        t.principle_phone as principlePhone,
+        t.net_name as netName
+        FROM machine_info t
+        LEFT JOIN machine m1 on m1.code = t.machine_type
+        LEFT JOIN machine m2 on m2.code = t.machine_number
+        LEFT JOIN careacodetblqg pro on pro.code = t.province
+        LEFT JOIN careacodetblqg cit on cit.code = t.city
+        LEFT JOIN careacodetblqg coun on coun.code = t.county
+        <where>
+               t.machine_id = #{0}
+        </where>
+    </select>
+    
+    <insert id="insertSelective" parameterType="com.boyasafe.model.MachineInfo" >
+    insert into machine_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="machineId != null" >
+        machine_id,
+      </if>
+      <if test="machineType != null" >
+        machine_type,
+      </if>
+      <if test="machineNumber != null" >
+        machine_number,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="softwareName != null" >
+        software_name,
+      </if>
+      <if test="softwareVersion != null" >
+        software_version,
+      </if>
+      <if test="installDir != null" >
+        install_dir,
+      </if>
+      <if test="installTime != null" >
+        install_time,
+      </if>
+      <if test="installer != null" >
+        installer,
+      </if>
+      <if test="installerPhone != null" >
+        installer_phone,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="operatorPhone != null" >
+        operator_phone,
+      </if>
+      <if test="principle != null" >
+        principle,
+      </if>
+      <if test="principlePhone != null" >
+        principle_phone,
+      </if>
+      <if test="netName != null" >
+        net_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="machineId != null" >
+        #{machineId,jdbcType=VARCHAR},
+      </if>
+      <if test="machineType != null" >
+      #{machineType,jdbcType=VARCHAR},
+      </if>
+      <if test="machineNumber != null" >
+      #{machineNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+       #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+       #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+       #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareName != null" >
+        #{softwareName,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareVersion != null" >
+        #{softwareVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="installDir != null" >
+        #{installDir,jdbcType=VARCHAR},
+      </if>
+      <if test="installTime != null" >
+        #{installTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="installer != null" >
+        #{installer,jdbcType=VARCHAR},
+      </if>
+      <if test="installerPhone != null" >
+        #{installerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorPhone != null" >
+        #{operatorPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="principle != null" >
+        #{principle,jdbcType=VARCHAR},
+      </if>
+      <if test="principlePhone != null" >
+        #{principlePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="netName != null" >
+        #{netName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

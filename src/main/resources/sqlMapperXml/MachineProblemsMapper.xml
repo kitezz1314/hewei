@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boyasafe.mapper.MachineProblemsMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.boyasafe.model.MachineProblems">
+		<id column="problem_id" property="problemId" />
+		<result column="machine_id" property="machineId" />
+		<result column="seller" property="seller" />
+		<result column="seller_phone" property="sellerPhone" />
+		<result column="question_behave" property="questionBehave" />
+		<result column="question_solve" property="questionSolve" />
+		<result column="up_door" property="upDoor" />
+		<result column="fit" property="fit" />
+		<result column="fit_id" property="fitId" />
+		<result column="fit_name" property="fitName" />
+		<result column="question_status" property="questionStatus" />
+		<result column="end_time" property="endTime" />
+		<result column="begin_time" property="beginTime" />
+	</resultMap>
+	<select id="selectMachineProblemsPage" resultType="Map">
+        SELECT 
+        t.problem_id as problemId,
+        t.machine_id as machineId,
+        t.seller,
+        t.seller_phone as sellerPhone,
+        t.question_behave as questionBehave,
+        t.question_solve as questionSolve,
+        t.up_door as upDoor,
+        t.fit,
+        t.fit_id as fitId,
+        t.fit_name as fitName,
+        t.question_status as questionStatus,
+        t.end_time as endTime,
+        t.begin_time as beginTime
+       
+        FROM machine_problems t
+        <where>
+        	1=1
+            <if test="machineId != null">
+             and   t.machine_id = #{machineId}
+            </if>
+            <if test="seller != null">
+             and   t.seller like '%${seller}%'
+            </if>
+            <if test="questionStatus != null">
+             and   t.question_status = #{questionStatus}
+            </if>
+        </where>
+        GROUP BY t.problem_id
+    </select>
+</mapper>

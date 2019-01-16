@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boyasafe.mapper.DataMapper">
+	<select id="selectDataPageByProvince" resultType="Map">
+		SELECT
+		principle,
+		city.note AS province,
+		count(*) AS number
+		FROM
+		machine_info m
+		LEFT JOIN careacodetblqg city ON city. CODE = m.province
+		<where>
+            <if test=" startTime != null ">
+                <![CDATA[ and install_time >= #{startTime} ]]>
+            </if>
+            <if test=" endTime != null ">
+                <![CDATA[ and install_time <= #{endTime} ]]>
+            </if>
+        </where>  
+		GROUP BY
+		principle,
+		province
+		ORDER BY
+		number DESC
+	</select>
+	
+	<select id="selectDataPageByPrinciple" resultType="Map">
+		SELECT
+		principle,
+		count(*) AS number
+		FROM
+		machine_info
+		<where>
+            <if test=" startTime != null ">
+                <![CDATA[ and install_time >= #{startTime} ]]>
+            </if>
+            <if test=" endTime != null ">
+                <![CDATA[ and install_time <= #{endTime} ]]>
+            </if>
+        </where>  
+		GROUP BY
+		principle
+		ORDER BY
+		number DESC
+	</select>
+</mapper>

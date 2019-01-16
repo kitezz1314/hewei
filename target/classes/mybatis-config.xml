@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!--logImpl属性配置指定使用LOG4J输出日志-->
+	<!-- <settings>
+		<setting name="logImpl" value="LOG4J"></setting>
+		<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+	</settings> -->
+	<!--配置了一个类的包名，使用类时不用使用全名了-->
+	<typeAliases>
+		<package name="com.boyasafe.model"/>
+	</typeAliases>
+	<!--环境配置中主要配置了数据库连接-->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC">
+				<property name="" value=""/>
+			</transactionManager>
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://111.204.81.20:3307/aftersale"/>
+				<property name="username" value="root"/>
+				<property name="password" value="root"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<!--配置了一个包含完整类路径的CountryMapper.xml这是一个mybatis的sql语句和映射配置文件-->
+	<mappers>
+		<!-- 这种方式需要将所有映射文件一一列举出来，如果新增映射文件还需要修改，不方便 -->
+		<mapper resource="sqlMapperXml/TokenMapper.xml"/> 
+		<mapper resource="sqlMapperXml/TicketMapper.xml"/> 
+		
+		<!-- 这种配置会查找包tk.mybatis.simple.mapper下的所有接口，对接口进行遍历看接口对应的命名空间是否存在，存在抛出异常，
+		不存在将接口名转化成xml路径解析xml -->
+		<!-- <package name="com.boyasafe.mapper"></package> -->
+	</mappers>
+</configuration>
