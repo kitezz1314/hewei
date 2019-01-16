@@ -9,7 +9,7 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <listener>
-    <listener-class>com.boyasafe.SqlListner</listener-class>
+    <listener-class>com.hewei.SqlListner</listener-class>
   </listener>
   <filter>
     <filter-name>encodingFilter</filter-name>

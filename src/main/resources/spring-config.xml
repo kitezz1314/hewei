@@ -26,7 +26,7 @@
     <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
     <!-- 扫描service -->
     
-    <context:component-scan base-package="com.boyasafe.service" use-default-filters="false">
+    <context:component-scan base-package="com.hewei.service" use-default-filters="false">
     	<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
     

@@ -35,7 +35,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="com.boyasafe" level="info" />
+        <Logger name="com.hewei" level="info" />
         <Root level="WARN" additivity="false">
             <AppenderRef ref="Console" />
             <AppenderRef ref="RollingFile" />

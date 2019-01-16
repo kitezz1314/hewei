@@ -10,7 +10,7 @@
 	</settings> -->
 	<!--配置了一个类的包名，使用类时不用使用全名了-->
 	<typeAliases>
-		<package name="com.boyasafe.model"/>
+		<package name="com.hewei.model"/>
 	</typeAliases>
 	<!--环境配置中主要配置了数据库连接-->
 	<environments default="development">
@@ -34,6 +34,6 @@
 		
 		<!-- 这种配置会查找包tk.mybatis.simple.mapper下的所有接口，对接口进行遍历看接口对应的命名空间是否存在，存在抛出异常，
 		不存在将接口名转化成xml路径解析xml -->
-		<!-- <package name="com.boyasafe.mapper"></package> -->
+		<!-- <package name="com.heweipper"></package> -->
 	</mappers>
 </configuration>

@@ -16,7 +16,7 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "Invoker", targetNamespace = "http://cxfservice.boyasafe.com/")
+@WebService(name = "Invoker", targetNamespace = "http://cxfservice.hewei.com/")
 @XmlSeeAlso({
     ObjectFactory.class
 })
@@ -33,8 +33,8 @@ public interface Invoker {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "cancle", targetNamespace = "http://cxfservice.boyasafe.com/", className = "com.demo.client.Cancle")
-    @ResponseWrapper(localName = "cancleResponse", targetNamespace = "http://cxfservice.boyasafe.com/", className = "com.demo.client.CancleResponse")
+    @RequestWrapper(localName = "cancle", targetNamespace = "http://cxfservice.hewei.com/", className = "com.demo.client.Cancle")
+    @ResponseWrapper(localName = "cancleResponse", targetNamespace = "http://cxfservice.hewei.com/", className = "com.demo.client.CancleResponse")
     public String cancle(
         @WebParam(name = "machineNumber", targetNamespace = "")
         String machineNumber,
@@ -52,8 +52,8 @@ public interface Invoker {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "writeBack2Social", targetNamespace = "http://cxfservice.boyasafe.com/", className = "com.demo.client.WriteBack2Social")
-    @ResponseWrapper(localName = "writeBack2SocialResponse", targetNamespace = "http://cxfservice.boyasafe.com/", className = "com.demo.client.WriteBack2SocialResponse")
+    @RequestWrapper(localName = "writeBack2Social", targetNamespace = "http://cxfservice.hewei.com/", className = "com.demo.client.WriteBack2Social")
+    @ResponseWrapper(localName = "writeBack2SocialResponse", targetNamespace = "http://cxfservice.hewei.com/", className = "com.demo.client.WriteBack2SocialResponse")
     public String writeBack2Social(
         @WebParam(name = "machineNumber", targetNamespace = "")
         String machineNumber,
@@ -68,8 +68,8 @@ public interface Invoker {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getSecret", targetNamespace = "http://cxfservice.boyasafe.com/", className = "com.demo.client.GetSecret")
-    @ResponseWrapper(localName = "getSecretResponse", targetNamespace = "http://cxfservice.boyasafe.com/", className = "com.demo.client.GetSecretResponse")
+    @RequestWrapper(localName = "getSecret", targetNamespace = "http://cxfservice.hewei.com/", className = "com.demo.client.GetSecret")
+    @ResponseWrapper(localName = "getSecretResponse", targetNamespace = "http://cxfservice.hewei.com/", className = "com.demo.client.GetSecretResponse")
     public String getSecret(
         @WebParam(name = "requestData", targetNamespace = "")
         String requestData);
@@ -82,8 +82,8 @@ public interface Invoker {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getData", targetNamespace = "http://cxfservice.boyasafe.com/", className = "com.demo.client.GetData")
-    @ResponseWrapper(localName = "getDataResponse", targetNamespace = "http://cxfservice.boyasafe.com/", className = "com.demo.client.GetDataResponse")
+    @RequestWrapper(localName = "getData", targetNamespace = "http://cxfservice.hewei.com/", className = "com.demo.client.GetData")
+    @ResponseWrapper(localName = "getDataResponse", targetNamespace = "http://cxfservice.hewei.com/", className = "com.demo.client.GetDataResponse")
     public String getData(
         @WebParam(name = "machineNumber", targetNamespace = "")
         String machineNumber);
@@ -97,8 +97,8 @@ public interface Invoker {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "writeBack2Bank", targetNamespace = "http://cxfservice.boyasafe.com/", className = "com.demo.client.WriteBack2Bank")
-    @ResponseWrapper(localName = "writeBack2BankResponse", targetNamespace = "http://cxfservice.boyasafe.com/", className = "com.demo.client.WriteBack2BankResponse")
+    @RequestWrapper(localName = "writeBack2Bank", targetNamespace = "http://cxfservice.hewei.com/", className = "com.demo.client.WriteBack2Bank")
+    @ResponseWrapper(localName = "writeBack2BankResponse", targetNamespace = "http://cxfservice.hewei.com/", className = "com.demo.client.WriteBack2BankResponse")
     public String writeBack2Bank(
         @WebParam(name = "machineNumber", targetNamespace = "")
         String machineNumber,

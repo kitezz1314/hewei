@@ -33,7 +33,7 @@
 			$
 					.ajax({
 						type : 'get',
-						url : 'http://aftersale.boyasafe.com/wechat/addPage3?url='
+						url : 'http://aftersale.hewei.com/wechat/addPage3?url='
 								+ url,
 						async : false,
 						cache : false,

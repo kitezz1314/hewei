@@ -15,7 +15,7 @@
     <mvc:annotation-driven/>
     <!-- aspectj aop启用CGliB代理 -->
     <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
-    <context:component-scan base-package="com.boyasafe.controller;com.boyasafe.commons.scan;com.boyasafe.wechat"/>
+    <context:component-scan base-package="com.hewei.controller;com.hewei.commons.scan;com.hewei.wechat"/>
     
     <!-- 配置结果页面 前缀和后缀 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -31,13 +31,13 @@
     <mvc:resources mapping="/favicon.ico" location="/static/style/images/favicon.ico" cache-period="31556926"/>
     
     <!-- csrf CookieCsrfTokenRepository -->
-    <bean class="com.boyasafe.commons.csrf.CookieCsrfTokenRepository" />
+    <bean class="com.hewei.commons.csrf.CookieCsrfTokenRepository" />
     
     <!-- Spring csrf 拦截器 -->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/login" />
-            <bean class="com.boyasafe.commons.csrf.CsrfInterceptor" />
+            <bean class="com.hewei.commons.csrf.CsrfInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>
     
@@ -73,8 +73,8 @@
     <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
     
     <!-- ueditor -->
-    <bean class="com.boyasafe.commons.ueditor.UeditorManager"/>
-    <bean class="com.boyasafe.commons.ueditor.UeditorService"/>
+    <bean class="com.hewei.commons.ueditor.UeditorManager"/>
+    <bean class="com.hewei.commons.ueditor.UeditorService"/>
     <!-- 使用spring servlet3.0 默认上传 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
     

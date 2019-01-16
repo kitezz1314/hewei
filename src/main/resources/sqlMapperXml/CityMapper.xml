@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.boyasafe.mapper.CityMapper" >
-  <resultMap id="BaseResultMap" type="com.boyasafe.model.City" >
+<mapper namespace="com.hewei.mapper.CityMapper" >
+  <resultMap id="BaseResultMap" type="com.hewei.model.City" >
     <id column="CODE" property="code" jdbcType="VARCHAR" />
     <result column="NOTE" property="note" jdbcType="VARCHAR" />
     <result column="PYCODE" property="pycode" jdbcType="VARCHAR" />
@@ -48,13 +48,13 @@
     delete from careacodetblqg
     where CODE = #{code,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.boyasafe.model.City" >
+  <insert id="insert" parameterType="com.hewei.model.City" >
     insert into careacodetblqg (CODE, NOTE, PYCODE
       )
     values (#{code,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{pycode,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.boyasafe.model.City" >
+  <insert id="insertSelective" parameterType="com.hewei.model.City" >
     insert into careacodetblqg
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="code != null" >
@@ -79,7 +79,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.boyasafe.model.City" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hewei.model.City" >
     update careacodetblqg
     <set >
       <if test="note != null" >
@@ -91,7 +91,7 @@
     </set>
     where CODE = #{code,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.boyasafe.model.City" >
+  <update id="updateByPrimaryKey" parameterType="com.hewei.model.City" >
     update careacodetblqg
     set NOTE = #{note,jdbcType=VARCHAR},
       PYCODE = #{pycode,jdbcType=VARCHAR}

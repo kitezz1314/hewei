@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.boyasafe.mapper.MachineCodeMapper" >
-  <resultMap id="BaseResultMap" type="com.boyasafe.model.Machine" >
+<mapper namespace="com.hewei.mapper.MachineCodeMapper" >
+  <resultMap id="BaseResultMap" type="com.hewei.model.Machine" >
     <id column="code" property="code" jdbcType="VARCHAR" />
     <result column="note" property="note" jdbcType="VARCHAR" />
     <result column="pycode" property="pycode" jdbcType="VARCHAR" />
@@ -34,13 +34,13 @@
     delete from machine
     where code = #{code,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.boyasafe.model.Machine" >
+  <insert id="insert" parameterType="com.hewei.model.Machine" >
     insert into machine (code, note, pycode
       )
     values (#{code,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{pycode,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.boyasafe.model.Machine" >
+  <insert id="insertSelective" parameterType="com.hewei.model.Machine" >
     insert into machine
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="code != null" >
@@ -65,7 +65,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.boyasafe.model.Machine" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hewei.model.Machine" >
     update machine
     <set >
       <if test="note != null" >
@@ -77,7 +77,7 @@
     </set>
     where code = #{code,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.boyasafe.model.Machine" >
+  <update id="updateByPrimaryKey" parameterType="com.hewei.model.Machine" >
     update machine
     set note = #{note,jdbcType=VARCHAR},
       pycode = #{pycode,jdbcType=VARCHAR}

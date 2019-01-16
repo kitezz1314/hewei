@@ -25,7 +25,7 @@
 			var url = location.href;
 			$.ajax({
 						type : 'get',
-						url : 'http://aftersale.boyasafe.com/wechat/addPage4?url='
+						url : 'http://aftersale.hewei.com/wechat/addPage4?url='
 								+ url,
 						async : false,
 						cache : false,
@@ -93,7 +93,7 @@
 		function updateStatus(id) {
 			$.ajax({
 				type : 'get',
-				url : 'http://aftersale.boyasafe.com/wechat/updateStatus?id='
+				url : 'http://aftersale.hewei.com/wechat/updateStatus?id='
 						+ id,
 				async : false,
 				cache : false,
@@ -101,7 +101,7 @@
 				success : function(data) {
 					
 					$.messager.alert('提示', data.msg, 'info');
-					window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx17717cc913f8ddc7&redirect_uri=http://aftersale.boyasafe.com/wechat/problemsList&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+					window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx17717cc913f8ddc7&redirect_uri=http://aftersale.hewei.com/wechat/problemsList&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
 				}
 			});
 		}

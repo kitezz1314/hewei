@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.boyasafe.mapper.MachineInfoMapper">
+<mapper namespace="com.hewei.mapper.MachineInfoMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.boyasafe.model.MachineInfo">
+	<resultMap id="BaseResultMap" type="com.hewei.model.MachineInfo">
 		<id column="machine_id" property="machineId" />
 		<result column="machine_type" property="machineType" />
 		<result column="machine_number" property="machineNumber" />
@@ -65,7 +65,7 @@
         GROUP BY t.machine_id
     </select>
     
-    <select id="selectMachineById" resultType="com.boyasafe.model.MachineInfo">
+    <select id="selectMachineById" resultType="com.hewei.model.MachineInfo">
         SELECT 
         t.machine_id as machineId,
         m1.note as machineType,
@@ -95,7 +95,7 @@
         </where>
     </select>
     
-    <insert id="insertSelective" parameterType="com.boyasafe.model.MachineInfo" >
+    <insert id="insertSelective" parameterType="com.hewei.model.MachineInfo" >
     insert into machine_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="machineId != null" >

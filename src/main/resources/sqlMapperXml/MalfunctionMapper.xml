@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.boyasafe.mapper.MalfunctionMapper">
+<mapper namespace="com.hewei.mapper.MalfunctionMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.boyasafe.model.Malfunction">
+	<resultMap id="BaseResultMap" type="com.hewei.model.Malfunction">
 		<id column="id" property="id" />
 		<result column="machine_id" property="machineId" />
 		<result column="net_name" property="netName" />
@@ -39,7 +39,7 @@
 
 	</select>
 
-	<insert id="insertReturnId"  useGeneratedKeys="true" keyProperty="id" parameterType="com.boyasafe.model.Malfunction">
+	<insert id="insertReturnId"  useGeneratedKeys="true" keyProperty="id" parameterType="com.hewei.model.Malfunction">
 		insert into malfunction(
 		machine_id, net_name , question_des,
 		phone, reserve_time , province,city,county,image1,image2,image3,repairman,status,create_time,by1,by2,by3,by4)

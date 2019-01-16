@@ -24,7 +24,7 @@
 			var url = location.href;
 			$.ajax({
 				type:'get',
-				url:'http://aftersale.boyasafe.com/wechat/addPage2?url='+url,
+				url:'http://aftersale.hewei.com/wechat/addPage2?url='+url,
 				async:false,
 				cache:false,
 				dataType:'JSON',
@@ -60,7 +60,7 @@
 			progressLoad();
 			$.ajax({
 				type:'POST',
-				url:'http://aftersale.boyasafe.com/wechat/add',
+				url:'http://aftersale.hewei.com/wechat/add',
 				timeout:30000,
 				async:true,
 				cache:false,

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.boyasafe.mapper.UserMapper">
-    <resultMap id="userVoResultMap" type="com.boyasafe.model.vo.UserVo">
+<mapper namespace="com.hewei.mapper.UserMapper">
+    <resultMap id="userVoResultMap" type="com.hewei.model.vo.UserVo">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="login_name" property="loginName" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
@@ -93,7 +93,7 @@
         SELECT login_name,name from user
     </select>
     
-    <select id="selectUserByLoginName" resultType="com.boyasafe.model.User" parameterType="java.lang.String">
+    <select id="selectUserByLoginName" resultType="com.hewei.model.User" parameterType="java.lang.String">
         SELECT 
       	age
         FROM user 

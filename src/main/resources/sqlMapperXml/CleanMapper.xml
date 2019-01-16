@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.boyasafe.mapper.CleanMapper">
+<mapper namespace="com.hewei.mapper.CleanMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.boyasafe.model.Clean">
+	<resultMap id="BaseResultMap" type="com.hewei.model.Clean">
 		<id column="clean_id" property="cleanId" />
 		<result column="machine_id" property="machineId" />
 		<result column="cleaner" property="cleaner" />
